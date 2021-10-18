@@ -17,16 +17,55 @@ export const Convertidor = () => {
 
     const handleCalcular=()=>{
         let result:number
-        if (origin ==="cm" && destino ==="km") {
-            result = convertir /100;
+
+        if (origin ==="ml" && destino ==="cm") {
+            result = convertir /10;
             setResultado(result)
-        }else{
-            if (origin ==="km" && destino ==="cm") {
-                result = convertir *100000;
-                setResultado(result)
-            }
         }
-        
+        if (origin ==="ml" && destino ==="mt") {
+            result = convertir /1000;
+            setResultado(result)
+        }
+        if (origin ==="ml" && destino ==="km") {
+            result = convertir /1000000;
+            setResultado(result)
+        }
+        if (origin ==="cm" && destino ==="ml") {
+            result = convertir *10;
+            setResultado(result)
+        }
+        if (origin ==="cm" && destino ==="mt") {
+            result = convertir *100;
+            setResultado(result)
+        }
+        if (origin ==="cm" && destino ==="km") {
+            result = convertir *100000;
+            setResultado(result)
+        }
+        if (origin ==="mt" && destino ==="ml") {
+            result = convertir *1000;
+            setResultado(result)
+        }
+        if (origin ==="mt" && destino ==="cm") {
+            result = convertir *100;
+            setResultado(result)
+        }
+        if (origin ==="mt" && destino ==="km") {
+            result = convertir /1000;
+            setResultado(result)
+        }
+        if (origin ==="km" && destino ==="ml") {
+            result = convertir *1000000;
+            setResultado(result)
+        }
+        if (origin ==="km" && destino ==="cm") {
+            result = convertir *100000;
+            setResultado(result)
+        }
+        if (origin ==="km" && destino ==="mt") {
+            result = convertir *1000;
+            setResultado(result)
+        }
         
     }
  
@@ -77,9 +116,9 @@ export const Convertidor = () => {
 
 const styles = StyleSheet.create({
     input: {
-        borderWidth: 1,
+        borderWidth: 2,
         borderRadius: 5,
-        paddingHorizontal: 80,
+        paddingHorizontal: 20,
         paddingVertical: 5,
         borderColor: 'green',
         backgroundColor: 'gray'
