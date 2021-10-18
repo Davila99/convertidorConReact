@@ -7,7 +7,7 @@ import { Convertidor } from './src/components/Convertidor';
 export default function App() {
   return (
     <View style={styles.container}>
-    
+    <Text style={{ fontWeight:'bold', fontSize:19}}>Convertidor de Unidades</Text>
       <Convertidor/>
       <StatusBar style="auto" />
     </View>
@@ -17,7 +17,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#79DDDB',
     alignItems: 'center',
     justifyContent: 'center',
   },
