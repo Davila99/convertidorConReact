@@ -6,13 +6,15 @@ interface Props{
     defaultValue:string,
     errorMenssage?:string,
     handleError?:Boolean,
-    onChangeText: (text: string) => void
+    onChangueText: (text: string) => void
 }
 const FormEntrada = ({title, defaultValue,errorMenssage="ERROR",handleError, onChangueText}:Props) => {
     return (
         <View>
             <Text style={styles.label}>{title}</Text>
-            <TextInput style={styles.input}  defaultValue={defaultValue.toString()} />
+            <TextInput style={styles.input}  
+            defaultValue={defaultValue} 
+            onChangeText={text =>onChangueText(text)} />
         </View>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, Button, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Button, TextInput,Picker } from 'react-native';
 import FormEntrada from '../components/FormEntrada';
 
 const ConvertDiv = () => {
@@ -7,24 +7,77 @@ const ConvertDiv = () => {
     const [origin, setOrigin] = useState<number>(0)
     const [destino, setDestino] = useState<number>(0)
     const [resultado, setResultado] = useState<number>(0)
+    const [error, setError] = useState<boolean>(false)
+    const [selectedValue, setSelectedValue] = useState('');
 
+
+
+    const handleCantidadOrigin = (text: string) => {
+        const cant = parseFloat(text)
+        if (isNaN(cant)) {
+            setError(true)
+        }
+        else {
+            setError(false)
+        }
+        setOrigin(cant)
+    }
+    const handleCantidadDestino = (text: string) => {
+        const cant = parseFloat(text)
+        if (isNaN(cant)) {
+            setError(true)
+        }
+        else {
+            setError(false)
+        }
+        setDestino(cant)
+    }
     const handleCalcular = () => {
-        alert(destino)
-        alert(origin)
-        // let result = parseInt(setOrigin.toString()) * parseInt(setDestino.toString())
-        // setResultado(result)
+        let cantidadresult
+        if (selectedValue==="mul") {
+            cantidadresult = origin * destino
+            setResultado(cantidadresult)
+        }
+        if (selectedValue==="sum") {
+            cantidadresult = origin + destino
+            setResultado(cantidadresult)
+        }
+        if (selectedValue==="less") {
+            cantidadresult = origin - destino
+            setResultado(cantidadresult)
+        }
+        if (selectedValue==="div") {
+            cantidadresult = origin / destino
+            setResultado(cantidadresult)
+        }
+
+        // alert(selectedValue)
+        
+        
     }
     return (
         <View style={styles.container}>
             <FormEntrada
                 title="Cantidad"
                 defaultValue={origin.toString()}
-                onChangueText={setOrigin}
+                onChangueText={handleCantidadOrigin}
             />
+             <View>
+                <Picker
+                    selectedValue={selectedValue}
+                    style={{}}
+                    onValueChange={(itemValue) => setSelectedValue(itemValue)}
+                >
+                    <Picker.Item label="*" value="mul" />
+                    <Picker.Item label="+" value="sum" />
+                    <Picker.Item label="-" value="less" />
+                    <Picker.Item label="/" value="div" />
+                </Picker>
+            </View>
             <FormEntrada
                 title="Destino"
                 defaultValue={destino.toString()}
-                onChangueText={setDestino.toString()}
+                onChangueText={handleCantidadDestino}
             />
 
             <View style={styles.button}>
@@ -32,7 +85,7 @@ const ConvertDiv = () => {
 
                 />
 
-            <Text style={styles.result}>{resultado}</Text>
+                <Text style={styles.result}>{resultado}</Text>
 
             </View>
         </View>
@@ -50,9 +103,11 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 10
     },
-    result:{
-    alignItems:'center',
-    fontSize:30,
-    color:'red'
-    }
+    result: {
+        fontSize: 30,
+        color: 'red',
+        textAlign:'center',
+        paddingTop: 30
+    },
+
 })
