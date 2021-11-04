@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import Fab from '../components/Fab'
+
 const CounterScreen = () => {
 
     const [cantidad, setCantidad] = useState(0  )
@@ -11,11 +12,12 @@ const CounterScreen = () => {
     const handleSubtract = () => {
         setCantidad(cantidad - 1)
     }
+    
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{cantidad}</Text>
-            <Fab position='bl' size='md' title='-1' onPress={handleSum} ></Fab>
-            <Fab position='br' size='md' title='+1' onPress={handleSubtract} ></Fab>
+            <Fab position='br' size='md' title='+1' onPress={handleSum} ></Fab>
+            <Fab position='bl' size='md' title='-1' onPress={handleSubtract} ></Fab>
 
         </View>
     )

@@ -6,11 +6,13 @@ interface Props {
     size?: 'sm' | 'md' | 'lg';
     title: string;
     onPress: () => void
+
 }
 
 const Fab = ({ size, position, title, onPress }: Props) => {
 
     return (
+        
         <TouchableOpacity onPress={onPress}
             style={[
                 styles.button,
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     },
     left: {
         position: 'absolute',
-        bottom: 20,
+        bottom: 20  ,
         left: 20
     }
 
