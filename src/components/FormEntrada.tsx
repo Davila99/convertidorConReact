@@ -8,13 +8,24 @@ interface Props{
     handleError?:Boolean,
     onChangueText: (text: string) => void
 }
-const FormEntrada = ({title, defaultValue,errorMenssage="ERROR",handleError, onChangueText}:Props) => {
+const FormEntrada = ({title, defaultValue,handleError,errorMenssage="ERROR", onChangueText}:Props) => {
     return (
         <View>
             <Text style={styles.label}>{title}</Text>
             <TextInput style={styles.input}  
             defaultValue={defaultValue} 
-            onChangeText={text =>onChangueText(text)} />
+            onChangeText={text =>onChangueText(text)}
+             />
+              {
+                handleError
+                ?
+                (
+                    <Text style={styles.label}>
+                        {errorMenssage}
+                    </Text>
+                )
+                :null
+            }
         </View>
     )
 }
@@ -32,6 +43,9 @@ const styles = StyleSheet.create({
         borderColor:'green',
         borderWidth:2,
         paddingVertical:5,
-        paddingHorizontal:10
+        paddingHorizontal:10,
+        height:60,
+        fontSize:20
+
     }
 })

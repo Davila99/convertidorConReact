@@ -7,29 +7,29 @@ const ConvertDiv = () => {
     const [origin, setOrigin] = useState<number>(0)
     const [destino, setDestino] = useState<number>(0)
     const [resultado, setResultado] = useState<number>(0)
-    const [error, setError] = useState<boolean>(false)
+    // const [error, setError] = useState<boolean>(false)
     const [selectedValue, setSelectedValue] = useState('');
 
 
 
     const handleCantidadOrigin = (text: string) => {
         const cant = parseFloat(text)
-        if (isNaN(cant)) {
-            setError(true)
-        }
-        else {
-            setError(false)
-        }
+        // if (isNaN(cant)) {
+        //     setError(true)
+        // }
+        // else {
+        //     setError(false)
+        // }
         setOrigin(cant)
     }
     const handleCantidadDestino = (text: string) => {
         const cant = parseFloat(text)
-        if (isNaN(cant)) {
-            setError(true)
-        }
-        else {
-            setError(false)
-        }
+        // if (isNaN(cant)) {
+        //     setError(true)
+        // }
+        // else {
+        //     setError(false)
+        // }
         setDestino(cant)
     }
     const handleCalcular = () => {
@@ -85,7 +85,7 @@ const ConvertDiv = () => {
 
                 />
 
-                <Text style={styles.result}>{resultado}</Text>
+                <Text style={styles.result}>{resultado.toFixed(3)}</Text>
 
             </View>
         </View>
@@ -102,6 +102,9 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 10
+    },
+    picker:{
+    
     },
     result: {
         fontSize: 30,
